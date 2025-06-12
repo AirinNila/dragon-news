@@ -26,7 +26,7 @@ const Home = () => {
                 <div className="col-span-2 flex flex-col gap-4">
                     <p className="font-extrabold">Dragon News Home</p>
                     {
-                        news.map(data => <News key={data.id} data={data}></News>)
+                        news.slice(0,3).map(data => <News key={data.id} data={data}></News>)
                     }
                 </div>
                 <div>
