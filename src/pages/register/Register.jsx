@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Navbar from "../../components/Navbar";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Register = () => {
+    const {creatRegisterUser} = useContext(AuthContext)
       const handleRegisterForm = e => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
@@ -8,6 +11,13 @@ const Register = () => {
         const img = formData.get('img')
         const email = formData.get('email')
         const pass = formData.get('pass')
+        creatRegisterUser(email, pass )
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error)
+        })
         
         console.log(email, pass, name, img)
       }
