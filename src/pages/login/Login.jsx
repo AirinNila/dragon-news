@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { useContext} from "react";
 import { AuthContext } from "../../context/AuthProvider";
@@ -13,11 +13,12 @@ const Login = () => {
         const pass = formData.get('pass')
         loginUser(email, pass)
         .then(result => {
-            console.log(result.user)
+            console.log(result)
         })
         .catch(error => {
             console.log(error)
         })
+        
         console.log(email, pass)
     }
     return (
