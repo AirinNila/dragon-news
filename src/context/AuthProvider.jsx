@@ -18,15 +18,8 @@ const AuthProvider = ({children}) => {
     }
 
     const signOutUser = () => {
-        signOut(auth)
-        .then( () => {
-             console.log('logout successfully')
-        }
-           
-        )
-        .catch(error => {
-            console.log(error)
-        })
+       return signOut(auth)
+      
     }
 
     useEffect(() => {

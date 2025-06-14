@@ -1,7 +1,8 @@
 import { CiShare2, CiBookmark } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const News = ({ data }) => {
-    const { title, author, image_url, details } = data;
+    const { title, author, image_url, details, id } = data;
     return (
         <div className="flex flex-col">
             <div className="bg-gray-100 p-4 rounded-tl-selector rounded-tr-lg flex justify-between items-center">
@@ -28,7 +29,14 @@ const News = ({ data }) => {
                         src={image_url}
                         alt="Shoes" className="rounded-md" />
                 </figure>
-                <p className="text-base des mt-6">{details}</p>
+                {
+                    details.length > 200
+                    ?  <p className="text-base des mt-6">{details.slice(0,200)} <Link className="text-blue-600 font-bold" to={`/news/${id}`}>Read more..</Link></p>
+                    :  <p className="text-base des mt-6">{details}</p>
+                }
+                
+               
+               
                 <div className="border-t-2 p-3 border-t-gray-100 mt-3">
                     <div className="rating">
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" aria-label="1 star" />

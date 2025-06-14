@@ -3,7 +3,18 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext)
+  const {user, signOutUser} = useContext(AuthContext)
+  const handleLogout = () => {
+    signOutUser()
+      .then( () => {
+                 console.log('logout successfully')
+            }
+               
+            )
+            .catch(error => {
+                console.log(error)
+            })
+  }
   console.log(user)
     const navLinks = <>
          <li><NavLink to="/">Home</NavLink></li>
@@ -34,7 +45,11 @@ const Navbar = () => {
   </div>
   <div className="navbar-end flex gap-3 items-center">
     <img src="/public/user.png" alt="" />
-   <Link to="/login"><button className="btn bg-black text-white font-bold">Login</button></Link> 
+    {
+      user ?  <button onClick={handleLogout} className="btn bg-black text-white font-bold">Logout</button> 
+      : <Link to="/login"><button className="btn bg-black text-white font-bold">Login</button></Link>  
+    }
+  
   </div>
 </div>
         </div>
