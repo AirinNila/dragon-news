@@ -5,13 +5,14 @@ import RightSideNav from "../../components/RightSideNav";
 
 const NewsDetails = () => {
     const {id} = useParams()
+    console.log(id)
     return (
         <div>
             <Header></Header>
             <Navbar></Navbar>
             <div className="flex">
                  <div className="w-3/4">
-                    {id}
+                    Thanks
                 </div>
                 <div className="w-1/4">
                     <RightSideNav></RightSideNav>
